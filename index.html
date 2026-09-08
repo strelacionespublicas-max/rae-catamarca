@@ -1,0 +1,1070 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Recapitulacion de los encuentros de la Red de Articulacion Emprendedora de Catamarca.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="RAE - Recapitulacion de encuentros">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 rx=%2722%27 fill=%27%231A4C9C%27/%3E%3Ctext x=%2750%27 y=%2770%27 font-size=%2756%27 font-family=%27Arial%27 font-weight=%27bold%27 fill=%27%23C6D630%27 text-anchor=%27middle%27%3ER%3C/text%3E%3C/svg%3E">
+<title>RAE · Recapitulación de encuentros</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+  :root {
+    --paper: #FFFFFF;
+    --surface: #FFFFFF;
+    --surface-2: #EEF1F6;
+    --ink: #13233F;
+    --ink-soft: #566B87;
+    --line: #DCE3EC;
+    --blue: #1A4C9C;
+    --blue-ink: #1A4C9C;
+    --lime: #C6D630;
+    --lime-deep: #8B9B0C;
+    --magenta: #E4007E;
+    --magenta-ink: #C0006A;
+    --cyan: #29B6C8;
+    --cyan-ink: #0E7C8C;
+    --shadow: 0 1px 2px rgba(19,35,63,.06), 0 10px 26px rgba(19,35,63,.08);
+    --focus: #E4007E;
+    --hero-bg: #1A4C9C;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0E1B33; --surface: #152747; --surface-2: #1B315A;
+      --ink: #EAF0F9; --ink-soft: #9EB2CF; --line: #2A426E;
+      --blue: #6B9BE0; --blue-ink: #8FB4EC; --lime: #CBDA3C; --lime-deep: #CBDA3C;
+      --magenta: #FF57A9; --magenta-ink: #FF7DBD; --cyan: #4FCFE0; --cyan-ink: #7EDDEA;
+      --shadow: 0 1px 2px rgba(0,0,0,.35), 0 12px 34px rgba(0,0,0,.4);
+      --focus: #FF57A9; --hero-bg: #14356F;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #0E1B33; --surface: #152747; --surface-2: #1B315A;
+    --ink: #EAF0F9; --ink-soft: #9EB2CF; --line: #2A426E;
+    --blue: #6B9BE0; --blue-ink: #8FB4EC; --lime: #CBDA3C; --lime-deep: #CBDA3C;
+    --magenta: #FF57A9; --magenta-ink: #FF7DBD; --cyan: #4FCFE0; --cyan-ink: #7EDDEA;
+    --shadow: 0 1px 2px rgba(0,0,0,.35), 0 12px 34px rgba(0,0,0,.4);
+    --focus: #FF57A9; --hero-bg: #14356F;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  h1, h2, h3 {
+    font-family: "Anton", "Montserrat", Impact, sans-serif;
+    font-weight: 400; line-height: 1.07; text-transform: uppercase;
+    letter-spacing: .005em; text-wrap: balance; margin: 0;
+  }
+  h2 { font-size: clamp(1.8rem, 1rem + 3vw, 2.9rem); }
+  h3 { font-size: 1.02rem; letter-spacing: .03em; }
+  p { margin: 0 0 1rem; max-width: 64ch; }
+  a { color: var(--magenta-ink); }
+
+  .eyebrow {
+    font-family: "Montserrat", sans-serif; font-size: .72rem; font-weight: 700;
+    letter-spacing: .2em; text-transform: uppercase; color: var(--cyan-ink); margin: 0 0 .8rem;
+  }
+
+  /* nav */
+  nav.bar {
+    position: -webkit-sticky; position: sticky; top: 0; z-index: 40;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 2px 10px rgba(19,35,63,.06);
+  }
+  nav.bar .wrap { display: flex; gap: 6px; align-items: center; padding: 10px 24px; overflow-x: auto; }
+  nav.bar strong {
+    font-family: "Anton", sans-serif; font-weight: 400; text-transform: uppercase;
+    letter-spacing: .05em; font-size: 1rem; color: var(--blue-ink);
+    margin-right: auto; white-space: nowrap; padding-right: 14px;
+  }
+  nav.bar a {
+    flex: none; font-size: .78rem; font-weight: 600; text-decoration: none; color: var(--ink-soft);
+    padding: 6px 12px; border-radius: 999px; white-space: nowrap; border: 1px solid transparent;
+  }
+  nav.bar a:hover { color: var(--ink); background: var(--surface-2); border-color: var(--line); }
+  nav.bar a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+  /* hero */
+  header.hero {
+    background: var(--hero-bg); color: #fff; padding: 74px 0 52px;
+    position: relative; overflow: hidden;
+  }
+  header.hero::after {
+    content: ""; position: absolute; top: 0; right: 0;
+    border-top: 64px solid var(--lime); border-left: 64px solid transparent;
+  }
+  header.hero .eyebrow { color: #fff; opacity: .85; }
+  header.hero h1 {
+    font-size: clamp(3rem, 1rem + 12vw, 7rem); color: var(--lime); margin: 0 0 6px; letter-spacing: .02em;
+  }
+  header.hero .sub {
+    font-family: "Anton", sans-serif; text-transform: uppercase; letter-spacing: .04em;
+    font-size: clamp(1.1rem, .8rem + 1.6vw, 1.7rem); color: #fff; margin: 0 0 20px;
+  }
+  header.hero .lede { font-size: 1.12rem; color: #EAF1FB; max-width: 54ch; }
+  header.hero .mission {
+    margin: 16px 0 0; padding-left: 14px; border-left: 3px solid var(--lime);
+    font-size: .95rem; font-weight: 600; color: #fff; max-width: 52ch;
+  }
+
+  .jump { list-style: none; padding: 0; margin: 34px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .jump a {
+    display: block; text-decoration: none; color: #fff;
+    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.22);
+    border-radius: 12px; padding: 16px;
+  }
+  .jump a:hover { background: rgba(255,255,255,.16); }
+  .jump .n { font-family: "Anton", sans-serif; font-size: 1.3rem; color: var(--lime); display: block; }
+  .jump .t { font-size: .9rem; display: block; margin-top: 4px; }
+  @media (max-width: 680px) { .jump { grid-template-columns: 1fr; } }
+
+  /* encuentro sections */
+  .enc { padding: 60px 0; border-bottom: 1px solid var(--line); scroll-margin-top: 64px; }
+  .enc .accent { color: var(--blue-ink); }
+  .enc.e2 .accent { color: var(--cyan-ink); }
+  .enc.e3 .accent { color: var(--magenta-ink); }
+  .enc-head { border-left: 5px solid var(--blue); padding-left: 18px; margin-bottom: 8px; }
+  .enc.e2 .enc-head { border-left-color: var(--cyan); }
+  .enc.e3 .enc-head { border-left-color: var(--magenta); }
+  .enc-tag {
+    font-style: italic; color: var(--ink-soft); font-size: 1.02rem;
+    max-width: 60ch; margin: 14px 0 0;
+  }
+  .enc-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 22px 0 6px; }
+  .enc-note { flex-basis: 100%; font-size: .78rem; color: var(--ink-soft); margin: 2px 0 0; }
+  .enc-note:empty { display: none; }
+
+  .fgrid { margin-top: 26px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; align-items: start; }
+  .fgrid .fblock.wide { grid-column: 1 / -1; }
+  @media (max-width: 720px) { .fgrid { grid-template-columns: 1fr; } }
+
+  .fblock {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 20px 22px; box-shadow: var(--shadow); border-top: 3px solid var(--line);
+  }
+  .enc .fblock { border-top-color: color-mix(in srgb, var(--blue) 55%, var(--line)); }
+  .enc.e2 .fblock { border-top-color: color-mix(in srgb, var(--cyan) 55%, var(--line)); }
+  .enc.e3 .fblock { border-top-color: color-mix(in srgb, var(--magenta) 55%, var(--line)); }
+  .fblock > h3 { color: var(--ink); margin-bottom: 12px; }
+  .fblock ul { margin: 0; padding-left: 1.15rem; display: grid; gap: .4rem; font-size: .95rem; }
+  .fblock ul li::marker { color: var(--magenta); }
+  .fblock p { font-size: .95rem; margin: 0 0 .7rem; }
+  .fblock p:last-child { margin-bottom: 0; }
+  .fblock p .lead { font-weight: 700; color: var(--blue-ink); }
+
+  /* mini card grid inside a block */
+  .minicards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+  .minicard { background: var(--surface-2); border-radius: 9px; padding: 12px 14px; }
+  .minicard .k {
+    display: block; font-size: .64rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--magenta-ink); margin-bottom: 5px;
+  }
+  .minicard span.v { font-size: .9rem; }
+
+  /* bars */
+  .barset { display: grid; gap: 10px; }
+  .barset .row { display: grid; grid-template-columns: 118px 1fr; gap: 12px; align-items: center; }
+  .barset .lab { font-size: .82rem; font-weight: 600; }
+  .barset .track { background: var(--surface-2); border-radius: 7px; overflow: hidden; height: 30px; display: flex; align-items: center; }
+  .barset .fill {
+    height: 100%; display: flex; align-items: center; padding: 0 10px; border-radius: 7px;
+    background: var(--blue); min-width: fit-content;
+  }
+  .enc.e2 .barset .fill { background: var(--cyan); }
+  .enc.e3 .barset .fill { background: var(--magenta); }
+  .barset .fill b { color: #fff; font-family: "Anton", sans-serif; font-size: .95rem; letter-spacing: .02em; }
+  .enc.e2 .barset .fill b { color: #06313a; }
+  @media (max-width: 520px) { .barset .row { grid-template-columns: 92px 1fr; } .barset .lab { font-size: .76rem; } }
+
+  /* stat callout */
+  .callout {
+    display: flex; align-items: center; gap: 16px; margin-top: 4px;
+    background: var(--surface-2); border-radius: 10px; padding: 14px 16px;
+  }
+  .callout b { font-family: "Anton", sans-serif; font-size: 2.4rem; line-height: 1; color: var(--magenta-ink); flex: none; }
+  .enc .callout b { color: var(--blue-ink); }
+  .enc.e2 .callout b { color: var(--cyan-ink); }
+  .enc.e3 .callout b { color: var(--magenta-ink); }
+  .callout span { font-size: .9rem; color: var(--ink-soft); }
+
+  .btn {
+    font-family: "Montserrat", sans-serif; font-weight: 700; font-size: .84rem;
+    padding: 11px 20px; border-radius: 999px; cursor: pointer; border: 1px solid var(--blue);
+    text-transform: uppercase; letter-spacing: .04em; background: var(--blue); color: #fff;
+  }
+  .btn.ghost { background: transparent; color: var(--blue-ink); }
+  .btn.magenta { border-color: var(--magenta); background: var(--magenta); }
+  .btn.magenta.ghost { background: transparent; color: var(--magenta-ink); }
+  .btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .btn[disabled] { opacity: .6; cursor: default; }
+  .toast { font-size: .78rem; color: var(--cyan-ink); font-weight: 700; opacity: 0; transition: opacity .2s; text-transform: uppercase; letter-spacing: .06em; }
+  .toast.show { opacity: 1; }
+
+  .tag {
+    display: inline-block; margin-top: 14px; font-size: .7rem; font-weight: 700;
+    letter-spacing: .12em; text-transform: uppercase; color: #fff; background: var(--blue);
+    padding: 7px 13px; border-radius: 8px;
+  }
+
+  /* co-diseño interactive */
+  #codiseno .choice-group { margin-top: 28px; }
+  #codiseno .q { font-family: "Anton", sans-serif; text-transform: uppercase; font-size: 1.12rem; letter-spacing: .01em; margin-bottom: 4px; color: var(--ink); }
+  #codiseno .hint { font-size: .82rem; color: var(--ink-soft); margin-bottom: 13px; font-weight: 600; }
+  #codiseno .field {
+    font-family: "Montserrat", sans-serif; font-size: .95rem; color: var(--ink);
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+    padding: 12px 14px; width: 100%; max-width: 420px;
+  }
+  #codiseno .field:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; border-color: var(--magenta); }
+  .send-note { font-size: .82rem; color: var(--ink-soft); margin: 12px 0 0; }
+  .send-note.ok { color: var(--cyan-ink); font-weight: 700; }
+  .send-note.err { color: var(--magenta-ink); font-weight: 600; }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip {
+    font-family: "Montserrat", sans-serif; font-size: .9rem; font-weight: 600; text-align: left;
+    background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 10px;
+    padding: 11px 15px; cursor: pointer; transition: transform .08s ease;
+    display: inline-flex; align-items: center; gap: 9px; max-width: 100%;
+  }
+  .chip .dot { width: 15px; height: 15px; border: 2px solid var(--ink-soft); flex: none; display: grid; place-items: center; border-radius: 5px; }
+  .chip[data-single="true"] .dot { border-radius: 50%; }
+  .chip[aria-pressed="true"] { border-color: var(--magenta); background: color-mix(in srgb, var(--magenta) 12%, var(--surface)); color: var(--magenta-ink); }
+  .chip[aria-pressed="true"] .dot { border-color: var(--magenta); background: var(--magenta); }
+  .chip[aria-pressed="true"] .dot::after { content: ""; width: 6px; height: 6px; border-radius: 2px; background: #fff; }
+  .chip:hover { transform: translateY(-1px); }
+  .chip:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .summary { margin-top: 30px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 14px; padding: 24px; border-left: 4px solid var(--magenta); }
+  .summary h3 { margin-bottom: 12px; color: var(--ink); }
+  .summary dl { margin: 0; display: grid; gap: 12px; }
+  .summary dt { font-size: .66rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+  .summary dd { margin: 4px 0 0; font-weight: 600; }
+  .summary dd.empty { color: var(--ink-soft); font-weight: 500; font-style: italic; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; align-items: center; }
+
+  footer { padding: 40px 0 46px; color: var(--ink-soft); font-size: .8rem; border-top: 1px solid var(--line); }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: center; }
+  footer strong { color: var(--ink); font-weight: 700; }
+  .theme-toggle {
+    font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+    background: transparent; border: 1px solid var(--line); color: var(--ink-soft);
+    padding: 6px 12px; border-radius: 999px; cursor: pointer;
+  }
+  .theme-toggle:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+  /* volver arriba */
+  .totop {
+    position: fixed; right: 16px; bottom: 16px; z-index: 45;
+    width: 46px; height: 46px; border-radius: 50%;
+    border: none; cursor: pointer; background: var(--magenta); color: #fff;
+    display: grid; place-items: center; box-shadow: 0 6px 20px rgba(19,35,63,.28);
+    opacity: 0; transform: translateY(10px); pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease;
+  }
+  .totop.show { opacity: 1; transform: none; pointer-events: auto; }
+  .totop:hover { background: var(--magenta-ink); }
+  .totop:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+
+  @media (prefers-reduced-motion: reduce) { *, .totop { transition: none !important; } }
+
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    .wrap { padding: 0 16px; }
+    nav.bar .wrap { padding: 8px 16px; gap: 4px; }
+    nav.bar strong { font-size: .9rem; padding-right: 10px; }
+    nav.bar a { font-size: .74rem; padding: 5px 9px; }
+    header.hero { padding: 48px 0 38px; }
+    header.hero::after { border-top-width: 42px; border-left-width: 42px; }
+    header.hero h1 { font-size: clamp(2.8rem, 2rem + 10vw, 4.5rem); }
+    header.hero .lede { font-size: 1rem; }
+    header.hero .mission { font-size: .9rem; }
+    .jump { margin-top: 26px; gap: 10px; }
+    .enc { padding: 44px 0; }
+    .enc-head { padding-left: 14px; border-left-width: 4px; }
+    .fgrid { margin-top: 20px; gap: 12px; }
+    .fblock { padding: 16px 18px; }
+    .summary { padding: 18px; }
+    .actions { gap: 8px; }
+    .btn { flex: 1 1 auto; text-align: center; justify-content: center; }
+    #codiseno .field { max-width: none; }
+    .totop { right: 12px; bottom: 12px; width: 44px; height: 44px; }
+    footer .wrap { justify-content: flex-start; }
+  }
+  @media (max-width: 420px) {
+    .chips { flex-direction: column; align-items: stretch; }
+    .chip { width: 100%; }
+    .barset .row { grid-template-columns: 84px 1fr; gap: 10px; }
+    .barset .lab { font-size: .74rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="bar">
+  <div class="wrap">
+    <strong>RAE · Catamarca</strong>
+    <a href="#e1">1.er encuentro</a>
+    <a href="#e2">2.º encuentro</a>
+    <a href="#e3">3.er encuentro</a>
+    <a href="#codiseno">Co-diseño</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Red de Articulación Emprendedora · Catamarca</p>
+    <h1>RAE</h1>
+    <p class="sub">Recapitulación de los encuentros</p>
+    <p class="lede">Un entramado colaborativo que conecta municipio, instituciones, academia y sector privado para impulsar el desarrollo emprendedor de San Fernando del Valle de Catamarca. Acá está el resumen de todo lo trabajado en cada encuentro.</p>
+    <p class="mission">La RAE integra todas las herramientas para emprendedores estratégicos que contribuyan al desarrollo económico y el empleo en Catamarca.</p>
+
+    <ul class="jump">
+      <li><a href="#e1"><span class="n">01</span><span class="t">Catamarca, Ciudad Emprendedora — presentación del ecosistema</span></a></li>
+      <li><a href="#e2"><span class="n">02</span><span class="t">Consolidando la red — proyectos y gobernanza</span></a></li>
+      <li><a href="#e3"><span class="n">03</span><span class="t">Club de Emprendedores — propuesta y co-diseño</span></a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="encuentros"></main>
+
+<section id="codiseno" class="enc e3">
+  <div class="wrap">
+    <div class="enc-head">
+      <p class="eyebrow accent">Co-diseño de la Red</p>
+      <h2>Sumá tus preferencias</h2>
+    </div>
+    <p class="enc-tag">Las preguntas que la RAE viene trabajando en cada encuentro. Completá tus respuestas y tocá <strong>Enviar</strong>: quedan registradas en la planilla de la Red.</p>
+
+    <div class="choice-group">
+      <p class="q">Institución</p>
+      <p class="hint">¿A qué institución, empresa u organización representás?</p>
+      <input type="text" id="institucion" class="field" autocomplete="organization"
+             placeholder="Nombre de la institución" maxlength="120">
+    </div>
+
+    <div class="choice-group">
+      <p class="q">¿Cómo le gustaría participar?</p>
+      <p class="hint">Podés elegir varias opciones.</p>
+      <div class="chips" id="participacion">
+        <button class="chip" aria-pressed="false"><span class="dot"></span>Espacio de networking</button>
+        <button class="chip" aria-pressed="false"><span class="dot"></span>Apoyo como inversor en proyectos estratégicos</button>
+        <button class="chip" aria-pressed="false"><span class="dot"></span>Incentivos fiscales</button>
+        <button class="chip" aria-pressed="false"><span class="dot"></span>Producción estadística, informes y estudios de mercadotecnia</button>
+        <button class="chip" aria-pressed="false"><span class="dot"></span>Financiamiento</button>
+        <button class="chip" aria-pressed="false"><span class="dot"></span>Preincubación / incubación / aceleración</button>
+        <button class="chip" aria-pressed="false"><span class="dot"></span>Capacitación</button>
+        <button class="chip" aria-pressed="false"><span class="dot"></span>Patrocinador de espacios de comercialización</button>
+        <button class="chip" aria-pressed="false"><span class="dot"></span>Otros</button>
+      </div>
+    </div>
+
+    <div class="choice-group">
+      <p class="q">¿Cuál sería la frecuencia ideal para volver a participar en la Red?</p>
+      <p class="hint">Podés elegir varias opciones.</p>
+      <div class="chips" id="frecuencia">
+        <button class="chip" aria-pressed="false"><span class="dot"></span>En forma periódica bimestral</button>
+        <button class="chip" aria-pressed="false"><span class="dot"></span>En forma periódica trimestral</button>
+        <button class="chip" aria-pressed="false"><span class="dot"></span>En forma mensual</button>
+        <button class="chip" aria-pressed="false"><span class="dot"></span>Cuando los miembros lo requieran</button>
+      </div>
+    </div>
+
+    <div class="choice-group">
+      <p class="q">Cadena de desarrollo emprendedor — ¿dónde está tu aporte?</p>
+      <p class="hint">Podés elegir uno, dos o los tres eslabones.</p>
+      <div class="chips" id="cadena">
+        <button class="chip" aria-pressed="false"><span class="dot"></span>Economía social y popular</button>
+        <button class="chip" aria-pressed="false"><span class="dot"></span>Ideas o proyectos</button>
+        <button class="chip" aria-pressed="false"><span class="dot"></span>Empresas en marcha</button>
+      </div>
+    </div>
+
+    <div class="summary">
+      <h3>Tu respuesta</h3>
+      <dl>
+        <div><dt>Institución</dt><dd id="s-institucion" class="empty">Sin completar todavía</dd></div>
+        <div><dt>Cómo querés participar</dt><dd id="s-participacion" class="empty">Sin selección todavía</dd></div>
+        <div><dt>Frecuencia ideal</dt><dd id="s-frecuencia" class="empty">Sin selección todavía</dd></div>
+        <div><dt>Eslabón de aporte</dt><dd id="s-cadena" class="empty">Sin selección todavía</dd></div>
+      </dl>
+      <div class="actions">
+        <button class="btn magenta" id="send">Enviar respuesta</button>
+        <button class="btn magenta ghost" id="copy">Copiar</button>
+        <button class="btn magenta ghost" id="clear">Limpiar</button>
+        <span class="toast" id="toast">¡Copiado!</span>
+      </div>
+      <p class="send-note" id="send-note"></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span><strong>Red de Articulación Emprendedora</strong> · Instituto Municipal del Emprendedor · Catamarca</span>
+    <button class="theme-toggle" id="theme">Cambiar tema</button>
+  </div>
+</footer>
+
+<button class="totop" id="totop" type="button" aria-label="Volver arriba" hidden>
+  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 5l-7 7h4v7h6v-7h4z" fill="currentColor"/></svg>
+</button>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ================= datos de los encuentros ================= */
+  var MEETINGS = [
+    {
+      id: "e1", idx: "01",
+      when: "1.er encuentro RAE · Presentación del ecosistema",
+      title: "Catamarca, Ciudad Emprendedora",
+      tagline: "“Catamarca está llena de ideas, pero ¿cómo las convertimos en negocios con impacto real?”",
+      blocks: [
+        { h: "Agenda del encuentro", type: "cards", wide: true, items: [
+          { k: "01", v: "Presentación de los participantes y sus aportes al ecosistema emprendedor local" },
+          { k: "02", v: "Programa Ciudades Emprendedoras: presentación, principales hitos y camino a la Semana Global del Emprendedor" },
+          { k: "03", v: "Participación y co-diseño: espacio interactivo con preguntas digitales" },
+          { k: "04", v: "Cierre: síntesis de aportes y conclusiones" }
+        ]},
+        { h: "Sector económico formalizado — por rubro", type: "bars", items: [
+          { label: "Comercio", value: 65.3 }, { label: "Servicios", value: 28.6 }, { label: "Industria", value: 3.2 }
+        ]},
+        { h: "Sector formalizado — por tamaño de empresa", type: "bars", items: [
+          { label: "Micro", value: 80.4 }, { label: "Pequeños", value: 15.0 }, { label: "Medianos", value: 3.9 }, { label: "Grandes", value: 0.7 }
+        ]},
+        { h: "Sector económico no formalizado", type: "bars", items: [
+          { label: "Manufactura", value: 49.3 }, { label: "Compra-venta", value: 28 }, { label: "Servicios", value: 20.3 }, { label: "Oficios", value: 2.4 }
+        ]},
+        { h: "Fuentes del diagnóstico", type: "list", items: [
+          "Sector formalizado: Dirección General de Rentas Municipal, año 2025.",
+          "Sector no formalizado: registros y programas de la STDE y otras áreas municipales."
+        ]},
+        { h: "¿Dónde debemos focalizarnos?", type: "list", items: [
+          "Población con índice de necesidades muy alto: 44.985 personas y 28.279 personas.",
+          "“Ocho de cada diez negocios en la ciudad son micro, y la mayoría sigue en la informalidad.”"
+        ]},
+        { h: "Nuestro emprendedor actual", type: "list", items: [
+          "Edad: 18 a 65 años.",
+          "Microemprendimiento de comercio o servicios básicos.",
+          "Recursos limitados, sin acceso a crédito y con capacitaciones aisladas.",
+          "Mayormente informal, con falta de financiamiento y dificultad para crecer."
+        ]},
+        { h: "El emprendedor al que aspiramos", type: "list", items: [
+          "Una persona conectada, con herramientas para crecer y rodeada de aliados estratégicos.",
+          "Todas las generaciones activas: jóvenes, adultos y mayores.",
+          "Formalizado, con acceso a crédito y a programas.",
+          "Motivaciones: innovar y digitalizarse, generar empleo y contribuir al crecimiento local."
+        ]},
+        { h: "Emprendedores estratégicos y verticales", type: "cards", items: [
+          { k: "Economías", v: "De la experiencia, naranja, del conocimiento y verde (CVEC)" },
+          { k: "Verticales", v: "Cultura identitaria, sustentabilidad y tecnología" }
+        ]},
+        { h: "Objetivo", type: "text", items: [
+          "“Co-construir un espacio inclusivo que acompañe al desarrollo emprendedor fomentando el impacto social, económico y ambiental, para todas las personas con actitud emprendedora que quieran transformar ideas en oportunidades.”"
+        ]},
+        { h: "Instituto Municipal del Emprendedor", type: "cardsText", wide: true,
+          lead: "“Un espacio que articula, acompaña y potencia a nuestros emprendedores.” Sus ejes de trabajo:",
+          items: [
+            { k: "Formación", v: "Formación y asistencia técnica" },
+            { k: "Incubación", v: "Incubación y aceleración" },
+            { k: "Financiamiento", v: "Financiamiento e incentivos" },
+            { k: "Networking", v: "Networking e innovación" },
+            { k: "Comercialización", v: "Comercialización y ferias" },
+            { k: "Datos", v: "Datos, investigación y desarrollo" }
+          ]},
+        { h: "Red de Articulación", type: "list", items: [
+          "Un entramado colaborativo que conecta municipio, instituciones y sector privado para impulsar proyectos de largo plazo.",
+          "Actores: secretarías, tutores, recurso humano, políticas públicas, sector académico (consultores), sector privado, mentores, sector financiero y casos de éxito.",
+          "Estrategias colectivas y comunitarias; el turismo en red (Barrios Turísticos) como ejemplo de trabajo conjunto."
+        ]},
+        { h: "Semana Global del Emprendedor", type: "list", wide: true, items: [
+          "19 al 21 de noviembre en el Nodo Tecnológico.",
+          "Miércoles 19 (8 a 20 h): apertura institucional, presentación del IME, participación de las Secretarías de Ambiente, Turismo y Modernización, Espacio Emprendedor Semilla (Junior Achievement, Punto Joven, jóvenes emprendedores), Foro Emprendedurismo y Empleo y espacios de inspiración e intercambio.",
+          "Jueves 20 y viernes 21: “Conecta Catamarca con el NOA Emprendedor” — charlas magistrales, networking y articulación público-privada, con empresas y emprendedores de todo el país.",
+          "Organización: ST Relaciones Públicas."
+        ]},
+        { h: "Quiénes participaron", type: "list", wide: true, items: [
+          "Área municipal: Secretaría de Ambiente y Espacios Públicos, Instituto Municipal de Emprendedores, Secretaría de Gabinete y Modernización, Secretaría de Gobierno y Coordinación, Secretaría de Turismo y Desarrollo Económico, Caja de Crédito y Secretaría de Hacienda.",
+          "Sector privado: Andreani, Peusso, RE/MAX, Toyota Catamarca, Reinero Construcciones, El Rodeo, Juan Hormaeche.",
+          "Ministerios y SAPEM: Educación, Ciencia y Tecnología; Desarrollo Productivo; FOGACAT; ADEC; Caja de Crédito y Prestaciones de Catamarca.",
+          "Tercer sector: Consejo Profesional de Ciencias Económicas, Unión Comercial, Red Achalay, Cooperativa La Mulita Audiovisual, Cooperativa Juanito Contreras, Asociación de hoteles, bares, confiterías y restaurantes, Rotary Club, Federación Económica, Cámara Argentina de Comercio y Servicios, Facultad de Ciencias Económicas, Facultad de Ciencia y Tecnología, Instituto y Universidad FASTA, Punto Kennedy.",
+          "Sector financiero: Tarjeta Naranja, BNA, Banco Macro, Go Cuotas, Banco Credicoop."
+        ]}
+      ]
+    },
+
+    {
+      id: "e2", idx: "02",
+      when: "2.º encuentro RAE · 1.º Encuentro RAE 2026",
+      title: "Consolidando la red emprendedora",
+      tagline: "“Hacia un modelo de gobernanza y acción conjunta.”",
+      blocks: [
+        { h: "Agenda del encuentro", type: "cards", wide: true, items: [
+          { k: "01", v: "Bienvenida y recordando el encuentro anterior" },
+          { k: "02", v: "Compartiendo nuestros proyectos 2026" },
+          { k: "03", v: "Tu compromiso, ideas y aportes a la Red" },
+          { k: "04", v: "Propuesta de gobernanza y cierre" }
+        ]},
+        { h: "Recordando el encuentro anterior", type: "list", items: [
+          "El 100% de los participantes manifestó su deseo de participar en el co-diseño de herramientas para emprendedores de la Red.",
+          "Se relevó cómo les gustaría participar: networking, inversión, incentivos fiscales, estadística, financiamiento, preincubación / incubación / aceleración, capacitación, patrocinio de espacios de comercialización y otros.",
+          "Se relevó la frecuencia ideal de participación: bimestral, trimestral, mensual o cuando los miembros lo requieran."
+        ]},
+        { h: "Proyectos 2026 de la Red", type: "list", wide: true, items: [
+          "“Semilla Emprendedora” / “Un Proyecto, Un Futuro”: club de mentores, ronda de capitalización y ferias, con 14 cursos participantes de instituciones educativas públicas y privadas.",
+          "Certificación de San Fernando del Valle de Catamarca como Ciudad Emprendedora.",
+          "Programa Ciudades Emprendedoras en Acción — 2.ª edición 2026 (patrocinado).",
+          "Eventos 2026 (requieren financiación / patrocinio).",
+          "Plataforma de oficios y servicios de La Capital (financiada).",
+          "“Emprender entre pares — Canvas en acción”: 5 encuentros en el Nodo Tecnológico, mayo 2026 (patrocinado).",
+          "Mentoría de Alto Impacto: preparación para concursos nacionales y comunicación efectiva (requiere financiación / patrocinio).",
+          "Registro de Emprendedores (REM) (requiere financiación / patrocinio / colaboración)."
+        ]},
+        { h: "Tu compromiso, ideas y aportes", type: "list", items: [
+          "Dinámica participativa mediante código QR.",
+          "Pregunta disparadora: “¿Qué me motivó a estar hoy aquí?”, más ideas y aportes concretos a la Red."
+        ]},
+        { h: "Propuesta de gobernanza", type: "text", items: [
+          "Eje: “Generando valor y servicios concretos.”",
+          "Se presentaron el propósito, la propuesta y la metodología del modelo de gobernanza de la Red."
+        ]},
+        { h: "Comisiones 2026", type: "cards", wide: true, items: [
+          { k: "Patrocinio y RSE", v: "Eventos, espacios y programas" },
+          { k: "Financiamiento", v: "Líneas de crédito y subsidio de tasas" },
+          { k: "Asistencia técnica y capacitación", v: "Preincubación, incubación y aceleración" },
+          { k: "Datos", v: "Articulación" }
+        ]},
+        { h: "Categorías de socios emprendedores (avance)", type: "cards", wide: true, items: [
+          { k: "Socio Escala", v: "Micro y pequeñas empresas consolidadas, en crecimiento" },
+          { k: "Socio Activo", v: "Micro y pequeñas empresas en marcha, en consolidación" },
+          { k: "Socio Semilla", v: "Emprendedores con idea o proyecto con potencial" },
+          { k: "Socio General", v: "Emprendedores de la economía social o popular" }
+        ]},
+        { h: "Reconocimiento", type: "text", items: [
+          "Se distinguió a Banco Galicia por su acompañamiento a la Red. Convocatoria abierta a sumarse a la comunidad RAE por QR."
+        ]},
+        { h: "Quiénes acompañaron", type: "list", wide: true, items: [
+          "Secretarías municipales: Secretaría de Turismo y Desarrollo Económico; Educación y Cultura; Mujer, Género y Diversidad; Protección Ciudadana; Ambiente y Espacios Verdes; Gobierno y Coordinación; Gabinete y Modernización; Salud y Desarrollo Humano; Hacienda; y Concejales.",
+          "Ministerios provinciales y SAPEM: Desarrollo Productivo; Cultura, Turismo y Deporte; Educación, Ciencia y Tecnología; Trabajo, Planificación y RRHH; Integración Regional, Logística y Transporte; Camyen; ADEC; FOGACAT.",
+          "Tercer sector: Red Achalay, Cooperativa Juanito Contreras, Unión Comercial, AAVYTCA, AHBCRA, Federación Económica, CPCECAT, Colegio de Abogados, Rotary Club, Bienaventurados los Pobres.",
+          "Sector financiero: BNA, Banco Macro, Santander, Galicia, Patagonia, Credicoop, Tarjeta Naranja, Go Cuotas, Caja de Crédito Municipal y Provincial, CentroCard, Banco Santiago / Tarjeta Sol.",
+          "Sector privado y academia: RE/MAX, Toyota del Parque, Andreani, Belgrano Motos, Cantegrill, El Rodeo Alfajores, Peusso, La Mendocina, EPP Cat, UNCA, FASTA, IES, Punto Kennedy."
+        ]}
+      ]
+    },
+
+    {
+      id: "e3", idx: "03",
+      when: "3.er encuentro RAE · 27 de agosto de 2026",
+      title: "Club de Emprendedores de Catamarca",
+      tagline: "“Un espacio que integra todas las herramientas para emprendedores estratégicos.”",
+      blocks: [
+        { h: "Agenda del encuentro", type: "cards", wide: true, items: [
+          { k: "01", v: "Recapitulación y presentación de la propuesta del Club de Emprendedores" },
+          { k: "02", v: "Consentimiento y dinámica de articulación" },
+          { k: "03", v: "Esquema de comunicación" },
+          { k: "04", v: "Intercambio de ideas y cierre" }
+        ]},
+        { h: "¿Qué es un emprendedor?", type: "cards", items: [
+          { k: "¿Quién?", v: "Toda persona que asume riesgos económicos y emocionales" },
+          { k: "¿Para qué?", v: "Diseñar, desarrollar y poner en marcha un proyecto o negocio propio" },
+          { k: "¿Por qué?", v: "Necesidad, oportunidad, placer, independencia o mandato" }
+        ]},
+        { h: "¿Cómo se categorizan los emprendedores en SFVC?", type: "bars", wide: true, items: [
+          { label: "Necesidad", value: 55 }, { label: "Gestación", value: 25 }, { label: "En marcha", value: 20 }
+        ]},
+        { h: "Detalle de las categorías", type: "list", items: [
+          "55% por necesidad: economía popular, subsistencia, autoempleo, mayoría informal.",
+          "25% en gestación: ideas y proyectos.",
+          "20% en marcha: micro y pequeñas empresas."
+        ]},
+        { h: "¿Por qué un Club de Emprendedores?", type: "cardsText", wide: true, items: [
+          { k: "Sencillez", v: "No requiere figura jurídica ni estructura orgánica" },
+          { k: "Necesidad y oportunidad", v: "Concentra las herramientas públicas, privadas, académicas y del tercer sector en un solo lugar" },
+          { k: "Tendencia de gestión", v: "El 61% de los municipios de la RIL ya cuentan con un espacio de este tipo" }
+        ]},
+        { h: "¿Para qué un Club de Emprendedores?", type: "cards", items: [
+          { k: "Ordenar", v: "Integrar el sistema económico: ferias, financiamiento, innovación, internacionalización y cadenas de valor" },
+          { k: "Retener", v: "Identificar y retener talentos emprendedores del territorio" },
+          { k: "Articular", v: "Conectar entre sectores a través de la RAE" }
+        ]},
+        { h: "Estructura del Club", type: "list", items: [
+          "Requiere: registro de emprendedores, categoría de socios y herramientas de apoyo.",
+          "Sede: Instituto Municipal del Emprendedor.",
+          "En red con secretarías municipales e instituciones facilitadoras (RAE)."
+        ]},
+        { h: "Socios emprendedores", type: "cards", items: [
+          { k: "Economía social y popular", v: "Emprendimientos de subsistencia y autoempleo" },
+          { k: "Micro y pequeñas en marcha", v: "Hasta 5 años de vida y hasta 10 empleados" },
+          { k: "Ideas y proyectos", v: "Con potencial de crecimiento" }
+        ]},
+        { h: "Socios facilitadores", type: "text", wide: true, items: [
+          "<strong>Socio Mentor:</strong> empresarios, gerentes, profesionales y emprendedores con experiencia. Donan horas para mentorías 1 a 1 y talleres gratuitos. Ganan prestigio, posicionamiento profesional y detección de futuros clientes o socios.",
+          "<strong>Socio Padrino:</strong> medianas y grandes empresas y cámaras empresarias. Sponsoreo de eventos y concursos, becas y desafíos de innovación abierta. Ganan RSE con impacto local, visibilidad de marca y acceso directo a talento e innovación.",
+          "<strong>Socio Académico:</strong> universidades e institutos de formación técnica. Prácticas profesionales e investigación para transferencia tecnológica. Ganan RSE, visibilidad de marca y acceso a talento."
+        ]},
+        { h: "Oferta de herramientas por segmento", type: "list", wide: true, items: [
+          "Economía social y popular: venta de bienes y servicios, ferias y eventos, plataforma Mi Capital Conecta, talleres (costo, kit del feriante, venta digital) y Caja de Crédito.",
+          "Ideas o proyectos: diplomaturas en Desarrollo Emprendedor y en Educación Financiera y Ciudadanía Digital, asistencia técnica, colegios y consejos profesionales, direcciones especializadas y concursos (Innovatur).",
+          "Micro y pequeñas empresas en marcha: capacitaciones ágiles, Banco Galicia, mentoring, Fundación Inspirar — Remax, eventos de networking, Café Emprendedor y Semana Global del Emprendedor."
+        ]},
+        { h: "Cronograma 2026", type: "list", items: [
+          "27 de agosto: 2.º Encuentro de la RAE.",
+          "Primera semana de septiembre: lanzamiento del Club de Emprendedores con sus nuevas herramientas.",
+          "Encuentros con la RAE para fortalecer el Club y evento emprendedor por el festejo del Nodo (Concurso InnovaTur).",
+          "Octubre / noviembre: Semana Global del Emprendedor y cierre de programas."
+        ]},
+        { h: "Esquema de comunicación", type: "list", items: [
+          "Se dejan las comunidades separadas y se migra a un grupo único.",
+          "Todos publican: oportunidades, consultas y contactos.",
+          "Sin cadenas ni publicidad ajena.",
+          "Lo que no suma a la red se modera después, en privado.",
+          "Buena onda, siempre. Vigente desde el 27 de agosto de 2026."
+        ]},
+        { h: "Cierre", type: "text", items: [
+          "El Club de Emprendedores integra todas las herramientas para emprendedores estratégicos que contribuyan al desarrollo económico y la generación de empleo en Catamarca."
+        ]}
+      ]
+    }
+  ];
+
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  }
+  /* allows a few inline tags we control (strong) but escapes the rest */
+  function rich(s) {
+    return esc(s).replace(/&lt;(\/?)strong&gt;/g, "<$1strong>");
+  }
+
+  function renderBlock(b) {
+    var wide = b.wide ? " wide" : "";
+    var inner = "<h3>" + esc(b.h) + "</h3>";
+    if (b.type === "list") {
+      inner += "<ul>" + b.items.map(function (t) { return "<li>" + rich(t) + "</li>"; }).join("") + "</ul>";
+    } else if (b.type === "text") {
+      inner += b.items.map(function (t) { return "<p>" + rich(t) + "</p>"; }).join("");
+    } else if (b.type === "cards" || b.type === "cardsText") {
+      if (b.lead) inner += "<p><span class=\"lead\">" + esc(b.lead) + "</span></p>";
+      inner += "<div class=\"minicards\">" + b.items.map(function (c) {
+        return "<div class=\"minicard\"><span class=\"k\">" + esc(c.k) + "</span><span class=\"v\">" + esc(c.v) + "</span></div>";
+      }).join("") + "</div>";
+    } else if (b.type === "bars") {
+      var max = Math.max.apply(null, b.items.map(function (x) { return x.value; }));
+      inner += "<div class=\"barset\">" + b.items.map(function (x) {
+        var w = Math.max(14, Math.round((x.value / max) * 100));
+        var val = String(x.value).replace(".", ",") + "%";
+        return "<div class=\"row\"><span class=\"lab\">" + esc(x.label) + "</span>" +
+          "<span class=\"track\"><span class=\"fill\" style=\"width:" + w + "%\"><b>" + val + "</b></span></span></div>";
+      }).join("") + "</div>";
+    }
+    return "<div class=\"fblock" + wide + "\">" + inner + "</div>";
+  }
+
+  function summaryDoc(m) {
+    var blocks = m.blocks.map(function (b) {
+      var body;
+      if (b.type === "bars") {
+        body = "<ul>" + b.items.map(function (x) {
+          return "<li>" + esc(x.label) + ": " + String(x.value).replace(".", ",") + "%</li>";
+        }).join("") + "</ul>";
+      } else if (b.type === "cards" || b.type === "cardsText") {
+        body = (b.lead ? "<p>" + esc(b.lead) + "</p>" : "") + "<ul>" + b.items.map(function (c) {
+          return "<li><strong>" + esc(c.k) + ":</strong> " + esc(c.v) + "</li>";
+        }).join("") + "</ul>";
+      } else if (b.type === "text") {
+        body = b.items.map(function (t) { return "<p>" + rich(t) + "</p>"; }).join("");
+      } else {
+        body = "<ul>" + b.items.map(function (t) { return "<li>" + rich(t) + "</li>"; }).join("") + "</ul>";
+      }
+      return "<h4>" + esc(b.h) + "</h4>" + body;
+    }).join("\n");
+    return [
+      "<!doctype html><html lang=\"es\"><head><meta charset=\"utf-8\">",
+      "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">",
+      "<title>Resumen ejecutivo — " + esc(m.title) + "</title>",
+      "<style>",
+      "*{box-sizing:border-box}",
+      "body{margin:0;background:#fff;color:#13233F;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.6}",
+      ".sheet{max-width:760px;margin:0 auto;padding:56px 40px 72px}",
+      ".kicker{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#0E7C8C;margin:0 0 10px}",
+      "h1{font-size:30px;line-height:1.15;margin:0 0 6px;color:#1A4C9C}",
+      ".when{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#566B87;margin:0 0 18px}",
+      ".tag{font-style:italic;color:#566B87;border-left:4px solid #C6D630;padding:6px 0 6px 16px;margin:0 0 26px}",
+      "h4{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#C0006A;font-weight:700;margin:26px 0 6px}",
+      "ul{margin:0;padding-left:20px}li{margin:5px 0}p{margin:0 0 10px}",
+      "hr{border:none;border-top:1px solid #DCE3EC;margin:36px 0 18px}",
+      "footer{font-size:12px;color:#566B87}",
+      "@media print{.sheet{padding:0 8px}}",
+      "</style></head><body><div class=\"sheet\">",
+      "<p class=\"kicker\">Red de Articulación Emprendedora · Resumen ejecutivo</p>",
+      "<h1>" + esc(m.title) + "</h1>",
+      "<p class=\"when\">" + esc(m.when) + "</p>",
+      "<p class=\"tag\">" + esc(m.tagline) + "</p>",
+      blocks,
+      "<hr><footer>Red de Articulación Emprendedora — Instituto Municipal del Emprendedor, Catamarca. Documento generado desde la página de recapitulación de los encuentros de la RAE.</footer>",
+      "</div></body></html>"
+    ].join("\n");
+  }
+
+  function slug(s) {
+    return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "")
+      .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60);
+  }
+
+  function stripTags(s) { return String(s).replace(/<[^>]+>/g, ""); }
+
+  /* limpia caracteres que las fuentes estándar del PDF no dibujan bien */
+  function pdfClean(s) {
+    return String(s)
+      .replace(/[‘’‚‛]/g, "'")
+      .replace(/[“”„‟]/g, '"')
+      .replace(/[–—−]/g, "-")
+      .replace(/…/g, "...")
+      .replace(/ /g, " ")
+      .replace(/•/g, "-");
+  }
+
+  function jsPDFReady() { return window.jspdf && window.jspdf.jsPDF; }
+  function waitForLib(check, ms) {
+    return new Promise(function (resolve, reject) {
+      if (check()) { resolve(); return; }
+      var waited = 0;
+      var t = setInterval(function () {
+        if (check()) { clearInterval(t); resolve(); }
+        else if ((waited += 150) >= ms) { clearInterval(t); reject(new Error("lib-unavailable")); }
+      }, 150);
+    });
+  }
+
+  /* genera el resumen ejecutivo como PDF (jsPDF) → Promise<Blob> */
+  function makePdfBlob(m) {
+    return waitForLib(jsPDFReady, 4000).then(function () {
+      var JsPDF = window.jspdf.jsPDF;
+      var doc = new JsPDF({ unit: "pt", format: "a4" });
+      var pw = doc.internal.pageSize.getWidth();
+      var ph = doc.internal.pageSize.getHeight();
+      var mx = 52, my = 56, maxw = pw - mx * 2;
+      var y = my;
+
+      function ink() { doc.setTextColor(19, 35, 63); }
+      function need(h) { if (y + h > ph - my) { doc.addPage(); y = my; } }
+
+      function para(text, o) {
+        o = o || {};
+        doc.setFont("helvetica", o.bold ? "bold" : (o.italic ? "italic" : "normal"));
+        doc.setFontSize(o.size || 10);
+        if (o.color) doc.setTextColor(o.color[0], o.color[1], o.color[2]); else ink();
+        var lh = o.leading || (o.size || 10) * 1.35;
+        var lines = doc.splitTextToSize(pdfClean(text), o.width || maxw);
+        for (var i = 0; i < lines.length; i++) {
+          need(lh);
+          doc.text(lines[i], o.x || mx, y);
+          y += lh;
+        }
+      }
+      function bullet(text) {
+        doc.setFont("helvetica", "normal"); doc.setFontSize(10);
+        var lines = doc.splitTextToSize(pdfClean(text), maxw - 14);
+        for (var i = 0; i < lines.length; i++) {
+          need(13.5);
+          if (i === 0) { doc.setTextColor(228, 0, 126); doc.text("-", mx, y); }
+          ink();
+          doc.text(lines[i], mx + 14, y);
+          y += 13.5;
+        }
+        y += 3;
+      }
+
+      para("RED DE ARTICULACION EMPRENDEDORA  |  RESUMEN EJECUTIVO", { bold: true, size: 8, color: [14, 124, 140] });
+      y += 6;
+      para(m.title, { bold: true, size: 18, color: [26, 76, 156] });
+      y += 3;
+      para(m.when, { bold: true, size: 9, color: [86, 107, 135] });
+      y += 6;
+      para(m.tagline, { italic: true, size: 10, color: [86, 107, 135] });
+      y += 8;
+      doc.setDrawColor(198, 214, 48); doc.setLineWidth(2);
+      need(2); doc.line(mx, y, mx + 46, y); y += 14;
+
+      m.blocks.forEach(function (b) {
+        y += 10;
+        need(16);
+        para(b.h.toUpperCase(), { bold: true, size: 9.5, color: [192, 0, 106] });
+        y += 4;
+        if (b.type === "bars") {
+          b.items.forEach(function (x) { bullet(x.label + ": " + String(x.value).replace(".", ",") + "%"); });
+        } else if (b.type === "cards" || b.type === "cardsText") {
+          if (b.lead) { para(b.lead, { size: 10 }); y += 4; }
+          b.items.forEach(function (c) { bullet(c.k + ": " + c.v); });
+        } else if (b.type === "text") {
+          b.items.forEach(function (t) { para(stripTags(t), { size: 10 }); y += 5; });
+        } else {
+          b.items.forEach(function (t) { bullet(stripTags(t)); });
+        }
+      });
+
+      y += 18;
+      para("Red de Articulacion Emprendedora - Instituto Municipal del Emprendedor, Catamarca. Documento generado desde la pagina de recapitulacion de los encuentros de la RAE.",
+        { size: 8, color: [120, 132, 150] });
+
+      return doc.output("blob");
+    });
+  }
+
+  /* descarga nativa del navegador (fuera del entorno de artifacts: Vercel, archivo local, etc.) */
+  function nativeSave(filename, data) {
+    var isPdf = filename.slice(-4).toLowerCase() === ".pdf";
+    var blob = (data instanceof Blob) ? data
+      : new Blob([data], { type: isPdf ? "application/pdf" : "text/html;charset=utf-8" });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url; a.download = filename;
+    document.body.appendChild(a); a.click();
+    setTimeout(function () { document.body.removeChild(a); URL.revokeObjectURL(url); }, 200);
+  }
+  /* entrega el archivo: por el capability de artifacts si existe, si no por descarga nativa */
+  function deliver(filename, data, downloads) {
+    if (downloads) return downloads.save({ filename: filename, data: data });
+    nativeSave(filename, data);
+    return Promise.resolve();
+  }
+
+  var mainEl = document.getElementById("encuentros");
+  MEETINGS.forEach(function (m) {
+    var sec = document.createElement("section");
+    sec.className = "enc " + m.id;
+    sec.id = m.id;
+    sec.innerHTML =
+      '<div class="wrap">' +
+        '<div class="enc-head">' +
+          '<p class="eyebrow accent">Encuentro ' + esc(m.idx) + ' · ' + esc(m.when) + '</p>' +
+          '<h2>' + esc(m.title) + '</h2>' +
+        '</div>' +
+        '<p class="enc-tag">' + esc(m.tagline) + '</p>' +
+        '<div class="enc-actions">' +
+          '<button class="btn' + (m.id === "e3" ? " magenta" : "") + ' dl" type="button">Descargar resumen ejecutivo</button>' +
+          '<span class="toast dl-toast">¡Listo!</span>' +
+          '<p class="enc-note"></p>' +
+        '</div>' +
+        '<div class="fgrid">' + m.blocks.map(renderBlock).join("") + '</div>' +
+      '</div>';
+    mainEl.appendChild(sec);
+
+    var btn = sec.querySelector(".dl");
+    var dlToast = sec.querySelector(".dl-toast");
+    var note = sec.querySelector(".enc-note");
+    btn.addEventListener("click", function () {
+      btn.disabled = true;
+      var prev = btn.textContent;
+      btn.textContent = "Preparando…";
+      note.textContent = "";
+      var base = "resumen-ejecutivo-" + slug(m.title);
+
+      Promise.resolve(window.claude && window.claude.use ? window.claude.use("downloads") : null)
+        .catch(function () { return null; })
+        .then(function (downloads) {
+          // 1) intentar PDF; 2) si falla, HTML
+          return makePdfBlob(m)
+            .then(function (blob) { return deliver(base + ".pdf", blob, downloads); })
+            .catch(function (err) {
+              if (err && (err.code === "declined" || err.code === "rate_limited")) throw err;
+              return deliver(base + ".html", summaryDoc(m), downloads).then(function () {
+                note.textContent = "Se descargó en formato HTML (se abre en el navegador y podés guardarlo como PDF con Ctrl/Cmd + P).";
+              });
+            })
+            .then(function () {
+              dlToast.classList.add("show");
+              setTimeout(function () { dlToast.classList.remove("show"); }, 2000);
+            });
+        })
+        .catch(function (err) {
+          var code = err && err.code;
+          if (code === "declined") note.textContent = "Descarga cancelada.";
+          else if (code === "rate_limited") note.textContent = "Probá de nuevo en unos segundos.";
+          else note.textContent = "No se pudo generar la descarga. El contenido completo del encuentro está acá abajo.";
+        })
+        .then(function () { btn.disabled = false; btn.textContent = prev; });
+    });
+  });
+
+  /* ================= tema ================= */
+  var root = document.documentElement;
+  document.getElementById("theme").addEventListener("click", function () {
+    var cur = root.getAttribute("data-theme");
+    if (!cur) cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    root.setAttribute("data-theme", cur === "dark" ? "light" : "dark");
+  });
+
+  /* ================= volver arriba ================= */
+  var toTop = document.getElementById("totop");
+  if (toTop) {
+    toTop.hidden = false;
+    var toggleTop = function () {
+      if (window.pageYOffset > 500) toTop.classList.add("show");
+      else toTop.classList.remove("show");
+    };
+    toggleTop();
+    window.addEventListener("scroll", toggleTop, { passive: true });
+    toTop.addEventListener("click", function () {
+      if (matchMedia("(prefers-reduced-motion: reduce)").matches) window.scrollTo(0, 0);
+      else window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  /* ================= co-diseño ================= */
+
+  /* Formulario de Airtable — base "RAE · Co-diseño de la Red", tabla "Respuestas".
+     El botón "Enviar" abre este formulario con las respuestas ya cargadas; al
+     confirmarlo ahí, la fila queda registrada en la planilla. */
+  var FORM_URL = "https://airtable.com/appBLkThKVUppFFBk/pag7z6erm7ThAYYYR/form";
+
+  var KEY = "rae-codiseno";
+  var state = { institucion: "", participacion: [], frecuencia: [], cadena: [] };
+  try {
+    var saved = JSON.parse(localStorage.getItem(KEY) || "null");
+    if (saved) {
+      state = Object.assign(state, saved);
+      ["participacion", "frecuencia", "cadena"].forEach(function (k) {
+        if (!Array.isArray(state[k])) state[k] = state[k] ? [state[k]] : [];
+      });
+      if (typeof state.institucion !== "string") state.institucion = "";
+    }
+  } catch (e) {}
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+
+  function setLine(id, arr, emptyMsg) {
+    var el = document.getElementById(id);
+    if (!arr || !arr.length) { el.textContent = emptyMsg || "Sin selección todavía"; el.classList.add("empty"); return; }
+    el.textContent = arr.join(" · ");
+    el.classList.remove("empty");
+  }
+  function render() {
+    setLine("s-institucion", state.institucion ? [state.institucion] : [], "Sin completar todavía");
+    setLine("s-participacion", state.participacion);
+    setLine("s-frecuencia", state.frecuencia);
+    setLine("s-cadena", state.cadena);
+  }
+  function wireGroup(groupId, key, single) {
+    var btns = document.getElementById(groupId).querySelectorAll(".chip");
+    btns.forEach(function (b) {
+      var label = b.textContent.trim();
+      var active = single ? state[key] === label : state[key].indexOf(label) > -1;
+      b.setAttribute("aria-pressed", active ? "true" : "false");
+      b.addEventListener("click", function () {
+        if (single) {
+          var isOn = state[key] === label;
+          state[key] = isOn ? null : label;
+          btns.forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+          if (!isOn) b.setAttribute("aria-pressed", "true");
+        } else {
+          var i = state[key].indexOf(label);
+          if (i > -1) { state[key].splice(i, 1); b.setAttribute("aria-pressed", "false"); }
+          else { state[key].push(label); b.setAttribute("aria-pressed", "true"); }
+        }
+        save(); render();
+      });
+    });
+  }
+
+  var instInput = document.getElementById("institucion");
+  instInput.value = state.institucion || "";
+  instInput.addEventListener("input", function () {
+    state.institucion = instInput.value.trim();
+    save(); render();
+  });
+
+  wireGroup("participacion", "participacion", false);
+  wireGroup("frecuencia", "frecuencia", false);
+  wireGroup("cadena", "cadena", false);
+  render();
+
+  function responseText() {
+    return [
+      "RED DE ARTICULACIÓN EMPRENDEDORA — Co-diseño",
+      "",
+      "Institución: " + (state.institucion || "—"),
+      "Cómo querés participar: " + (state.participacion.length ? state.participacion.join(", ") : "—"),
+      "Frecuencia ideal: " + (state.frecuencia.length ? state.frecuencia.join(", ") : "—"),
+      "Eslabón de aporte: " + (state.cadena.length ? state.cadena.join(", ") : "—")
+    ].join("\n");
+  }
+
+  var toast = document.getElementById("toast");
+  var sendNote = document.getElementById("send-note");
+
+  function copyText(txt, done) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(done, function () { window.prompt("Copiá tu respuesta:", txt); done(); });
+    } else { window.prompt("Copiá tu respuesta:", txt); done(); }
+  }
+
+  document.getElementById("copy").addEventListener("click", function () {
+    copyText(responseText(), function () {
+      toast.classList.add("show");
+      setTimeout(function () { toast.classList.remove("show"); }, 1800);
+    });
+  });
+
+  function buildFormUrl() {
+    var parts = [];
+    function add(field, val) {
+      if (val) parts.push("prefill_" + encodeURIComponent(field) + "=" + encodeURIComponent(val));
+    }
+    add("Institución", state.institucion);
+    add("Cómo le gustaría participar", state.participacion.join(", "));
+    add("Frecuencia ideal", state.frecuencia.join(", "));
+    add("Eslabón de aporte", state.cadena.join(", "));
+    return FORM_URL + (FORM_URL.indexOf("?") > -1 ? "&" : "?") + parts.join("&");
+  }
+
+  document.getElementById("send").addEventListener("click", function () {
+    if (!state.institucion) {
+      sendNote.className = "send-note err";
+      sendNote.textContent = "Completá el nombre de la institución antes de enviar.";
+      instInput.focus();
+      return;
+    }
+    if (!state.participacion.length && !state.frecuencia.length && !state.cadena.length) {
+      sendNote.className = "send-note err";
+      sendNote.textContent = "Elegí al menos una opción antes de enviar.";
+      return;
+    }
+    if (FORM_URL) {
+      window.open(buildFormUrl(), "_blank", "noopener");
+      sendNote.className = "send-note ok";
+      sendNote.textContent = "Se abrió el formulario con tus respuestas ya cargadas. Revisá y confirmá el envío ahí.";
+    } else {
+      copyText(responseText(), function () {
+        sendNote.className = "send-note ok";
+        sendNote.textContent = "Copiamos tu respuesta al portapapeles. Pegala y enviala al equipo de la RAE (el formulario de carga automática se activa en breve).";
+      });
+    }
+  });
+
+  document.getElementById("clear").addEventListener("click", function () {
+    state = { institucion: "", participacion: [], frecuencia: [], cadena: [] };
+    save();
+    instInput.value = "";
+    document.querySelectorAll("#codiseno .chip").forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+    sendNote.textContent = "";
+    render();
+  });
+})();
+</script>
+</body>
+</html>
